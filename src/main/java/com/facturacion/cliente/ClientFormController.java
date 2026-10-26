@@ -33,10 +33,10 @@ public class ClientFormController {
     public void setClient(ApiClient.ClientData client) {
         this.editing = client;
         if (client == null) {
-            formTitle.setText("New client");
+            formTitle.setText("Nuevo cliente");
             return;
         }
-        formTitle.setText("Edit client");
+        formTitle.setText("Editar cliente");
         nameField.setText(client.name());
         taxIdField.setText(client.taxId());
         addressField.setText(client.address());
@@ -57,7 +57,7 @@ public class ClientFormController {
         String phone = phoneField.getText().trim();
 
         if (name.isEmpty() || taxId.isEmpty()) {
-            errorLabel.setText("Name and tax ID are required");
+            errorLabel.setText("El nombre y el NIF/CIF son obligatorios");
             return;
         }
 

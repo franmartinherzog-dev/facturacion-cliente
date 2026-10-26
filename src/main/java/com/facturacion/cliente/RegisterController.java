@@ -35,7 +35,7 @@ public class RegisterController {
         String address = addressField.getText().trim();
 
         if (username.isEmpty() || password.isEmpty() || companyName.isEmpty() || taxId.isEmpty()) {
-            errorLabel.setText("Username, password, company name and tax ID are required");
+            errorLabel.setText("Usuario, contraseña, razón social y NIF/CIF son obligatorios");
             return;
         }
 

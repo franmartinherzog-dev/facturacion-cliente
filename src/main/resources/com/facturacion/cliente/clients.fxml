@@ -19,21 +19,27 @@
     <HBox spacing="8">
         <Label fx:id="userLabel" styleClass="title"/>
         <HBox HBox.hgrow="ALWAYS"/>
-        <Button text="Log out" onAction="#handleLogout"/>
+        <Button text="Cerrar sesión" onAction="#handleLogout"/>
     </HBox>
 
     <HBox spacing="8">
-        <TextField fx:id="searchField" promptText="Search by name" HBox.hgrow="ALWAYS"
+        <TextField fx:id="searchField" promptText="Buscar por nombre" HBox.hgrow="ALWAYS"
                    onAction="#handleSearch"/>
-        <Button text="Search" onAction="#handleSearch"/>
+        <Button text="Buscar" onAction="#handleSearch"/>
+    </HBox>
+
+        <HBox spacing="8">
+        <Button text="Nuevo" onAction="#handleNew"/>
+        <Button text="Editar" onAction="#handleEdit"/>
+        <Button text="Eliminar" onAction="#handleDelete"/>
     </HBox>
 
     <TableView fx:id="clientsTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="nameColumn" text="Name" prefWidth="220"/>
-            <TableColumn fx:id="taxIdColumn" text="Tax ID" prefWidth="110"/>
+            <TableColumn fx:id="nameColumn" text="Nombre" prefWidth="220"/>
+            <TableColumn fx:id="taxIdColumn" text="NIF/CIF" prefWidth="110"/>
             <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
-            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="110"/>
+            <TableColumn fx:id="phoneColumn" text="Teléfono" prefWidth="110"/>
         </columns>
     </TableView>
 

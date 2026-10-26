@@ -13,13 +13,13 @@
         <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
 
-    <Label text="Create account" styleClass="title"/>
-    <TextField fx:id="usernameField" promptText="Username (3-50 characters)" maxWidth="320"/>
-    <PasswordField fx:id="passwordField" promptText="Password (8-72 characters)" maxWidth="320"/>
-    <TextField fx:id="companyNameField" promptText="Company name" maxWidth="320"/>
-    <TextField fx:id="taxIdField" promptText="Tax ID (NIF/CIF)" maxWidth="320"/>
-    <TextField fx:id="addressField" promptText="Address (optional)" maxWidth="320"/>
+    <Label text="Crear cuenta" styleClass="title"/>
+    <TextField fx:id="usernameField" promptText="Usuario (3-50 caracteres)" maxWidth="320"/>
+    <PasswordField fx:id="passwordField" promptText="Contraseña (8-72 caracteres)" maxWidth="320"/>
+    <TextField fx:id="companyNameField" promptText="Razón social" maxWidth="320"/>
+    <TextField fx:id="taxIdField" promptText="NIF/CIF" maxWidth="320"/>
+    <TextField fx:id="addressField" promptText="Dirección (opcional)" maxWidth="320"/>
     <Label fx:id="errorLabel" styleClass="error" wrapText="true" maxWidth="320"/>
-    <Button fx:id="registerButton" text="Register" defaultButton="true" onAction="#handleRegister"/>
-    <Button text="Back to login" onAction="#handleBack"/>
+    <Button fx:id="registerButton" text="Registrarse" defaultButton="true" onAction="#handleRegister"/>
+    <Button text="Volver al inicio de sesión" onAction="#handleBack"/>
 </VBox>

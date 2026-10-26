@@ -26,7 +26,7 @@ public class LoginController {
         String password = passwordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            errorLabel.setText("Enter username and password");
+            errorLabel.setText("Introduce usuario y contraseña");
             return;
         }
 

@@ -114,10 +114,10 @@ public class ApiClient {
             }
             return response.body();
         } catch (IOException e) {
-            throw new ApiException(0, "Cannot connect to the server");
+            throw new ApiException(0, "No se puede conectar con el servidor");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new ApiException(0, "Request interrupted");
+            throw new ApiException(0, "Petición interrumpida");
         }
     }
 
@@ -131,7 +131,7 @@ public class ApiClient {
             }
             return String.valueOf(error.get("detail"));
         } catch (Exception e) {
-            return "Unexpected server error";
+            return "Error inesperado del servidor";
         }
     }
 }

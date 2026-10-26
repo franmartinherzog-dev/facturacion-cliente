@@ -14,14 +14,14 @@
     </padding>
 
     <Label fx:id="formTitle" styleClass="title"/>
-    <TextField fx:id="nameField" promptText="Name" maxWidth="320"/>
-    <TextField fx:id="taxIdField" promptText="Tax ID (NIF/CIF)" maxWidth="320"/>
-    <TextField fx:id="addressField" promptText="Address (optional)" maxWidth="320"/>
-    <TextField fx:id="emailField" promptText="Email (optional)" maxWidth="320"/>
-    <TextField fx:id="phoneField" promptText="Phone (optional)" maxWidth="320"/>
+    <TextField fx:id="nameField" promptText="Nombre o razón social" maxWidth="320"/>
+    <TextField fx:id="taxIdField" promptText="NIF/CIF" maxWidth="320"/>
+    <TextField fx:id="addressField" promptText="Dirección (opcional)" maxWidth="320"/>
+    <TextField fx:id="emailField" promptText="Email (opcional)" maxWidth="320"/>
+    <TextField fx:id="phoneField" promptText="Teléfono (opcional)" maxWidth="320"/>
     <Label fx:id="errorLabel" styleClass="error" wrapText="true" maxWidth="320"/>
     <HBox spacing="8" alignment="CENTER">
-        <Button fx:id="saveButton" text="Save" defaultButton="true" onAction="#handleSave"/>
-        <Button text="Cancel" cancelButton="true" onAction="#handleCancel"/>
+        <Button fx:id="saveButton" text="Guardar" defaultButton="true" onAction="#handleSave"/>
+        <Button text="Cancelar" cancelButton="true" onAction="#handleCancel"/>
     </HBox>
 </VBox>

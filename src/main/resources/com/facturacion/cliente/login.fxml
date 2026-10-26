@@ -13,10 +13,10 @@
         <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
 
-    <Label text="Log in" styleClass="title"/>
-    <TextField fx:id="usernameField" promptText="Username" maxWidth="280"/>
-    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="280"/>
+    <Label text="Iniciar sesión" styleClass="title"/>
+    <TextField fx:id="usernameField" promptText="Usuario" maxWidth="280"/>
+    <PasswordField fx:id="passwordField" promptText="Contraseña" maxWidth="280"/>
     <Label fx:id="errorLabel" styleClass="error"/>
-    <Button fx:id="loginButton" text="Log in" defaultButton="true" onAction="#handleLogin"/>
-    <Button text="Create account" onAction="#handleRegister"/>
+    <Button fx:id="loginButton" text="Iniciar sesión" defaultButton="true" onAction="#handleLogin"/>
+    <Button text="Crear cuenta" onAction="#handleRegister"/>
 </VBox>
