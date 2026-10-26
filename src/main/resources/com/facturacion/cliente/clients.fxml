@@ -35,6 +35,9 @@
     </HBox>
 
     <TableView fx:id="clientsTable" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
         <columns>
             <TableColumn fx:id="nameColumn" text="Nombre" prefWidth="220"/>
             <TableColumn fx:id="taxIdColumn" text="NIF/CIF" prefWidth="110"/>
