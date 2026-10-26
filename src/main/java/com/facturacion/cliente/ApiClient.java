@@ -2,9 +2,12 @@ package com.facturacion.cliente;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -21,6 +24,10 @@ public class ApiClient {
     public record LoginResult(String token, String username) {
     }
 
+    public record ClientData(Long id, String name, String taxId,
+                             String address, String email, String phone) {
+    }
+
     public LoginResult login(String username, String password) {
         String body = mapper.writeValueAsString(
                 Map.of("username", username, "password", password));
@@ -29,6 +36,18 @@ public class ApiClient {
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
         return mapper.readValue(send(request), LoginResult.class);
+    }
+
+        public List<ClientData> getClients(String search) {
+        String url = BASE_URL + "/api/clients";
+        if (search != null && !search.isBlank()) {
+            url += "?search=" + URLEncoder.encode(search.trim(), StandardCharsets.UTF_8);
+        }
+        HttpRequest request = HttpRequest.newBuilder(URI.create(url))
+                .header("Authorization", "Bearer " + Session.getToken())
+                .GET()
+                .build();
+        return List.of(mapper.readValue(send(request), ClientData[].class));
     }
 
     private String send(HttpRequest request) {
