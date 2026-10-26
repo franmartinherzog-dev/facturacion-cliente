@@ -18,4 +18,5 @@
     <PasswordField fx:id="passwordField" promptText="Password" maxWidth="280"/>
     <Label fx:id="errorLabel" styleClass="error"/>
     <Button fx:id="loginButton" text="Log in" defaultButton="true" onAction="#handleLogin"/>
+    <Button text="Create account" onAction="#handleRegister"/>
 </VBox>

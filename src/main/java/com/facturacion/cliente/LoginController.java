@@ -55,4 +55,9 @@ public class LoginController {
         thread.setDaemon(true);
         thread.start();
     }
+
+    @FXML
+    private void handleRegister() {
+        Navigator.show("register.fxml", 400, 450);
+    }
 }

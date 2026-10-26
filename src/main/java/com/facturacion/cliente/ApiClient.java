@@ -38,7 +38,22 @@ public class ApiClient {
         return mapper.readValue(send(request), LoginResult.class);
     }
 
-        public List<ClientData> getClients(String search) {
+    public void register(String username, String password, String companyName,
+                         String taxId, String address) {
+        String body = mapper.writeValueAsString(Map.of(
+                "username", username,
+                "password", password,
+                "companyName", companyName,
+                "taxId", taxId,
+                "address", address == null ? "" : address));
+        HttpRequest request = HttpRequest.newBuilder(URI.create(BASE_URL + "/api/auth/register"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+        send(request);
+    }
+
+    public List<ClientData> getClients(String search) {
         String url = BASE_URL + "/api/clients";
         if (search != null && !search.isBlank()) {
             url += "?search=" + URLEncoder.encode(search.trim(), StandardCharsets.UTF_8);
@@ -48,6 +63,46 @@ public class ApiClient {
                 .GET()
                 .build();
         return List.of(mapper.readValue(send(request), ClientData[].class));
+    }
+
+    public ClientData createClient(String name, String taxId, String address,
+                                   String email, String phone) {
+        HttpRequest request = HttpRequest.newBuilder(URI.create(BASE_URL + "/api/clients"))
+                .header("Authorization", "Bearer " + Session.getToken())
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(
+                        clientJson(name, taxId, address, email, phone)))
+                .build();
+        return mapper.readValue(send(request), ClientData.class);
+    }
+
+    public ClientData updateClient(Long id, String name, String taxId, String address,
+                                   String email, String phone) {
+        HttpRequest request = HttpRequest.newBuilder(URI.create(BASE_URL + "/api/clients/" + id))
+                .header("Authorization", "Bearer " + Session.getToken())
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(
+                        clientJson(name, taxId, address, email, phone)))
+                .build();
+        return mapper.readValue(send(request), ClientData.class);
+    }
+
+    public void deleteClient(Long id) {
+        HttpRequest request = HttpRequest.newBuilder(URI.create(BASE_URL + "/api/clients/" + id))
+                .header("Authorization", "Bearer " + Session.getToken())
+                .DELETE()
+                .build();
+        send(request);
+    }
+
+    private String clientJson(String name, String taxId, String address,
+                              String email, String phone) {
+        return mapper.writeValueAsString(Map.of(
+                "name", name,
+                "taxId", taxId,
+                "address", address == null ? "" : address,
+                "email", email == null ? "" : email,
+                "phone", phone == null ? "" : phone));
     }
 
     private String send(HttpRequest request) {
