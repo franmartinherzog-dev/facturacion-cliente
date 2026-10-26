@@ -43,8 +43,7 @@ public class LoginController {
         task.setOnSucceeded(event -> {
             ApiClient.LoginResult result = task.getValue();
             Session.start(result.token(), result.username());
-            loginButton.setDisable(false);
-            errorLabel.setText("Logged in as " + result.username()); // temporary
+            Navigator.show("clients.fxml", 800, 500);
         });
 
         task.setOnFailed(event -> {
