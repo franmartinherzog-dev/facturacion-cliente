@@ -125,13 +125,28 @@ public class ApiClient {
         try {
             Map<?, ?> error = mapper.readValue(body, Map.class);
             if (error.get("errors") instanceof Map<?, ?> fields) {
-                return fields.values().stream()
-                        .map(String::valueOf)
+                return fields.entrySet().stream()
+                        .map(entry -> fieldLabel(String.valueOf(entry.getKey()))
+                                + ": " + entry.getValue())
                         .collect(Collectors.joining(". "));
             }
             return String.valueOf(error.get("detail"));
         } catch (Exception e) {
             return "Error inesperado del servidor";
         }
+    }
+
+    private String fieldLabel(String field) {
+        return switch (field) {
+            case "username" -> "Usuario";
+            case "password" -> "Contraseña";
+            case "companyName" -> "Razón social";
+            case "taxId" -> "NIF/CIF";
+            case "name" -> "Nombre";
+            case "address" -> "Dirección";
+            case "email" -> "Email";
+            case "phone" -> "Teléfono";
+            default -> field;
+        };
     }
 }
