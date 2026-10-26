@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="12"
+      fx:controller="com.facturacion.cliente.LoginController">
+    <padding>
+        <Insets top="24" right="24" bottom="24" left="24"/>
+    </padding>
+
+    <Label text="Log in" styleClass="title"/>
+    <TextField fx:id="usernameField" promptText="Username" maxWidth="280"/>
+    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="280"/>
+    <Label fx:id="errorLabel" styleClass="error"/>
+    <Button fx:id="loginButton" text="Log in" defaultButton="true" onAction="#handleLogin"/>
+</VBox>
