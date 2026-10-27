@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="12"
+      fx:controller="com.facturacion.cliente.InvoiceFormController">
+    <padding>
+        <Insets top="16" right="16" bottom="16" left="16"/>
+    </padding>
+
+    <GridPane hgap="8" vgap="8">
+        <Label text="Cliente" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="clientCombo" maxWidth="Infinity"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+
+        <Label text="Fecha" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="datePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="IVA (%)" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="vatCombo" editable="true" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="IRPF (%)" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="irpfCombo" editable="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="8">
+        <Label text="Descripción" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Label text="Cantidad" prefWidth="80"/>
+        <Label text="Precio" prefWidth="90"/>
+        <Label text="Importe" prefWidth="100"/>
+        <Label prefWidth="60"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" prefHeight="200" VBox.vgrow="ALWAYS">
+        <content>
+            <VBox fx:id="linesBox" spacing="6"/>
+        </content>
+    </ScrollPane>
+
+    <HBox>
+        <Button text="Añadir línea" onAction="#handleAddLine"/>
+    </HBox>
+
+    <HBox>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <GridPane hgap="16" vgap="4">
+            <Label text="Base imponible" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="baseLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="IVA" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="vatLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="IRPF" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="irpfLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="TOTAL" style="-fx-font-weight: bold;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="totalLabel" style="-fx-font-weight: bold;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+    </HBox>
+
+    <Label fx:id="statusLabel" styleClass="error" wrapText="true"/>
+
+    <HBox spacing="8">
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Button text="Cancelar" onAction="#handleCancel"/>
+        <Button fx:id="saveButton" text="Guardar factura" defaultButton="true" onAction="#handleSave"/>
+    </HBox>
+</VBox>

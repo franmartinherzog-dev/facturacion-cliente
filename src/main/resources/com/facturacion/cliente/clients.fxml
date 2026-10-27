@@ -19,6 +19,7 @@
     <HBox spacing="8">
         <Label fx:id="userLabel" styleClass="title"/>
         <HBox HBox.hgrow="ALWAYS"/>
+        <Button text="Facturas" onAction="#handleInvoices"/>
         <Button text="Cerrar sesión" onAction="#handleLogout"/>
     </HBox>
 

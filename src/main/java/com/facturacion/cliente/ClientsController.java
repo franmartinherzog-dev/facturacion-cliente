@@ -59,7 +59,12 @@ public class ClientsController {
         Navigator.show("login.fxml", 400, 300);
     }
 
-        @FXML
+    @FXML
+    private void handleInvoices() {
+        Navigator.show("invoice-history.fxml", 800, 500);
+    }
+
+    @FXML
     private void handleNew() {
         openForm(null);
     }
